@@ -1,0 +1,24 @@
+#lang racket
+
+(define (mySort idx idy n vec)
+  (if (< idy n)
+    (begin((if (< (vector-ref vec idy) (vector-ref vec idx))
+      (let ((x (vector-ref vec idx))(y (vector-ref vec idy)))
+        (begin(vector-set! vec idx y)(vector-set! vec idy x)))
+      (void)))
+      
+      (mySort idx (+ idy 1) n vec))
+    (mySort (+ idx 1) 0)
+      )
+  )
+
+(define (myRead n vec)
+  (let ((m (read)))
+    (if (eq? m eof)
+      (mySort 0 0 n vec)
+      (begin (vector-set! vec n m)(myRead (+ n 1) vec))
+    )
+  )
+)
+
+(myRead 0 (make-vector 100))

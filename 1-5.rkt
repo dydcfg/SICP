@@ -1,0 +1,20 @@
+#lang racket
+(define (myLoop vec x n)
+  (if (<= n 4)
+      (begin(display 1)(newline))
+      (let ((x1 (vector-ref vec (- x 1))) 
+            (x2 (vector-ref vec (- x 2))) 
+            (x3 (vector-ref vec (- x 3))) 
+            (x4 (vector-ref vec (- x 4)))
+            (x5 (vector-ref vec (- x 5))))
+        (vector-set! vec x (+ x1 (* 4 x2) (* 5 x3) (* -2 x4 x4) (* x5 x5 x5)))
+         (if (= x n)
+             (begin(display (vector-ref vec x))(newline))
+             (myLoop vec (+ x 1) n)))))
+
+(define (myRead) (let ((x (read)))
+  (if (eq? x eof)
+      (void)
+      (begin(myLoop (make-vector (+ x 1) 1) 5 x)(myRead)))))
+
+(myRead)
