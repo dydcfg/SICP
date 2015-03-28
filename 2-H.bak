@@ -1,0 +1,19 @@
+#lang racket
+
+(define (revTree lis)
+  (if (eq? lis '())
+      lis
+      (if (list? lis)
+          (
+
+
+(define (myRead)
+  (let ((lis (read)))
+    (if (eq? lis eof)
+        (void)
+        (begin 
+          (display (revTree lis))
+          (newline)
+          (myRead)))))
+
+(myRead)
