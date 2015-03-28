@@ -17,4 +17,5 @@
           (display (revTree lis))
           (newline)
           (myRead)))))
+          
 (myRead)
