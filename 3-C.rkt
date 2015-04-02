@@ -20,14 +20,14 @@
   (define (find-all-triNum-and-cons num)
     (lambda (upper)
       (if (= num 1)
-          (map (lambda (x) (list x upper)) (enumerate 1 (- upper 1)))
+          (list (list upper))
           (map
-           (lamda (x) (append x (list upper)))
+           (lambda (x) (append (list upper) x))
            (flatmap (lambda (x)
                       ((find-all-triNum-and-cons (- num 1)) x))
-                    (enumerate 1 (- upper 1)))))))
+                    (enumerate-interval (+ upper 1) (- n (- num 2))))))))
           
-  (filter Correct? (find-all-triNum n 3)))
+  (filter Correct? (flatmap (find-all-triNum-and-cons 3) (enumerate-interval 1 (- n 2)))))
     
         
 
