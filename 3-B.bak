@@ -19,15 +19,13 @@
   (define (solve n m lis)
     (if (= n 8))))
 
-
-(define (myLoop k lis)
+(define (myLoop k x lis)
   (if (= k 0)
       (void)
-      (let ((x (read)))
-        (begin (display (list-ref lis x)) (newline) (myLoop (- k 1) lis)))))
+      (begin (display (list-ref lis x)) (newline) (myLoop (- k 1) 
 
 (define (myWork)
   (let ((t (read))))
-  (myLoop t (eightQueen)))
+  (
 
        
