@@ -19,6 +19,7 @@
       (* 10 (pow10 (- x 1)))))
   
 (define (eightQueen)
+<<<<<<< HEAD
   (define (isValid? x y)
     (if (or (or (= (car x) (car y)) (= (cdr x) (cdr y))) (= (abs (- (car x) (car y))) (abs (- (cdr x) (cdr y)))))
         #f
@@ -63,5 +64,20 @@
     (myLoop t (read) lis)))
 
 (myWork)
+=======
+  (define (solve n m lis)
+    (if (= n 8))))
+
+
+(define (myLoop k lis)
+  (if (= k 0)
+      (void)
+      (let ((x (read)))
+        (begin (display (list-ref lis x)) (newline) (myLoop (- k 1) lis)))))
+
+(define (myWork)
+  (let ((t (read))))
+  (myLoop t (eightQueen)))
+>>>>>>> origin/master
 
        

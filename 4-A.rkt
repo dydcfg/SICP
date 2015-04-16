@@ -9,6 +9,21 @@
 ;              (qsort (filter (lambda(x)
 ;                               (> (cadr x) (cadar lst))) lst)))))
 
+
+(define (accumulate op init seq)
+  (if (null? seq)
+      init
+      (op (car seq) (accumulate op init (cdr seq)))))
+
+(define (enumerate-interval a b)
+  (if (> a b)
+      '()
+      (cons a (enumerate-interval (+ a 1) b))))
+
+(define (flatmap proc seq)
+  (accumulate append '() (map proc seq)))
+
+
 (define (generate-huffman-tree lst)
   (define (mywork)
     (if (= 1 (length huffman-tree))
@@ -35,8 +50,7 @@
   (define (hehe x)
     (findCode x myTree))
     
-  (define haha (map hehe (string->list (symbol->string s))))
-  (display haha)
+  (define haha (flatmap hehe (string->list (symbol->string s))))
   haha)
             
   
