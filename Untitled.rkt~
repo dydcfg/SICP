@@ -1,16 +1,13 @@
 #lang racket
-
 (define (reverse lis) 
   (define (workItrt oldList newList) 
     (if (pair? oldList)
-        (workItrt (cdr oldList) (cons (car oldList) (newList)))
-        (newList)))
+        (workItrt (cdr oldList) (cons (car oldList) newList))
+        newList))
   (workItrt lis '())
 )
-
 (define (myWork) (let ((lis (read))) 
                    (if (eq? lis eof)
                        (void)
                        (begin(display (reverse lis))(newline)(myWork)))))
-
 (myWork)

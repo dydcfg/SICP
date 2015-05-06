@@ -1,0 +1,6 @@
+#lang racket
+(define (work)
+  (define x '3)
+  (define y (cons '4 x))
+  (eq? (cdr y) x))
+(work)

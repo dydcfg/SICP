@@ -5,9 +5,6 @@
       init
       (op (car seq) (accumulate op init (cdr seq)))))
 
-
-
-
 (define (enumerate-interval a b)
   (if (> a b)
       '()
@@ -18,11 +15,22 @@
 
 
 (define (tri-num-list n s)
-  (define (findAns n m s)
-    (if (= m 0)
-        (if ()
+  (define (Correct? tri) (= s (+ (list-ref tri 0) (+ (list-ref tri 1) (list-ref tri 2)))))
     
-  
+  (define (find-all-triNum-and-cons num)
+    (lambda (upper)
+      (if (= num 1)
+          (list (list upper))
+          (map
+           (lambda (x) (append (list upper) x))
+           (flatmap (lambda (x)
+                      ((find-all-triNum-and-cons (- num 1)) x))
+                    (enumerate-interval (+ upper 1) (- n (- num 2))))))))
+          
+  (filter Correct? (flatmap (find-all-triNum-and-cons 3) (enumerate-interval 1 (- n 2)))))
+    
+        
+
 (define (myloop)
   (let ((n (read))
         (s (read)))
